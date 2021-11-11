@@ -1,0 +1,5 @@
+stages:
+  - install
+  - eslint
+  - build
+  - deploy
