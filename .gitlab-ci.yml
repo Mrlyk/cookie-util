@@ -1,5 +1,30 @@
 stages:
   - install
-  - eslint
   - build
   - deploy
+
+cash: # 缓存
+  paths: 
+    - node_modules
+    - dist
+
+install-job:
+  tags: 
+    - mrlyk_mac
+  stage: install
+  script:
+    - npm install
+
+build-job:
+  tags:
+    - mrlyk_mac
+  stage: build
+  script:
+    - npm run build
+
+deploy-job:
+  tags:
+    - mrlyk_mac
+  stage: deploy
+  script:
+    - sshpass - p $TX_PASSWORD scp -r ./dist root@110.42.187.35 # 密码在 gitlab CI/CD 的变量中设置
