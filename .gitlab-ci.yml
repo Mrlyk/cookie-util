@@ -1,7 +1,6 @@
 stages:
   - install
-  - build
-  - deploy
+  - publish
 
 cache: # 缓存
   paths: 
@@ -9,22 +8,11 @@ cache: # 缓存
     - dist
 
 install-job:
-  tags: 
-    - mrlyk_mac
   stage: install
   script:
     - npm install
 
-build-job:
-  tags:
-    - mrlyk_mac
-  stage: build
+publish-job:
+  stage: publish
   script:
-    - npm run build
-
-deploy-job:
-  tags:
-    - mrlyk_mac
-  stage: deploy
-  script:
-    - sshpass - p $TX_PASSWORD scp -r ./dist root@110.42.187.35 # 密码在 gitlab CI/CD 的变量中设置
+    - npm publish --registry http://110.42.187.35
