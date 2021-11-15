@@ -3,7 +3,7 @@ stages:
   - build
   - deploy
 
-cash: # 缓存
+cache: # 缓存
   paths: 
     - node_modules
     - dist
