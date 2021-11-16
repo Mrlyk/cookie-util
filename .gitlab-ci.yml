@@ -19,6 +19,7 @@ publish-job:
     - tx_linux
   stage: publish
   script:
+    - echo $PATH
     - npm publish --registry http://110.42.187.35:4873
   only:
     - master
