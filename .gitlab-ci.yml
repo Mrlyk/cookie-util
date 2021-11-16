@@ -19,4 +19,4 @@ publish-job:
     - tx_linux
   stage: publish
   script:
-    - npm publish --registry http://110.42.187.35
+    - npm publish --registry http://110.42.187.35:4873
