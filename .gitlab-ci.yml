@@ -14,6 +14,13 @@ install-job:
   script:
     - npm install
 
+install-job-info:
+  tags:
+    -tx_linux
+  stage: install
+  script:
+    - ls -a
+
 publish-job:
   tags:
     - tx_linux
