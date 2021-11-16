@@ -16,7 +16,7 @@ install-job:
 
 install-job-info:
   tags:
-    -tx_linux
+    - tx_linux
   stage: install
   script:
     - ls -a
