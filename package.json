@@ -1,9 +1,9 @@
 {
   "name": "@liaoyk/cookie-manager-local",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/cookie-manager-local.js",
-  "module": "dist/cookie-manager-local.js",
+  "files": ["dist"],
   "scripts": {
     "build": "webpack --mode production --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
