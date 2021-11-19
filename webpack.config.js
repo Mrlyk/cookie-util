@@ -1,20 +1,33 @@
 const path = require('path')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const LodashWebpackPlugin = require('lodash-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const production = process.env.NODE_ENV === 'production' || false
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'cookieManagerLocal.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'cookie-manager-local.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'CookieManagerLocal',
+    libraryTarget: 'umd'
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          plugins: ['lodash']
+        }
       }
     ]
   },
@@ -34,5 +47,11 @@ module.exports = {
         }
       })
     ]
-  }
+  },
+  plugins: [
+    new LodashWebpackPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
+    new CleanWebpackPlugin()
+  ]
+
 }

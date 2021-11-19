@@ -1,9 +1,3 @@
-const str = 'hello ci/cd'
+import cookieManagerLocal from './utils/cookie-manager-local'
 
-function test () {
-  console.log(str)
-}
-
-test()
-
-console.log('success')
+export default cookieManagerLocal

@@ -21,6 +21,13 @@ install-job-info:
   script:
     - ls -a
 
+publish-job-version:
+  tags:
+    - tx_linux
+  stage: publish
+  script:
+    - npm version patch
+
 publish-job:
   tags:
     - tx_linux
