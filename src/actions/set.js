@@ -10,16 +10,17 @@ export default function setCookie (key, value, options) {
   if (name === undefined) {
     throw new Error('cookie-manager-local: 未找到 cookie 配置 - ' + key)
   }
+  if (options) {
   // 为了防止混乱，name 属性不允许重新定义。移除用户传过来的 name 属性
-  options = removeProperty(options, 'name')
-  options = merge({}, CookieManagerLocal.cookieSchema[key], options)
-  options.expires = CookieManagerLocal.convertExpires(options.maxAge)
-  options.domain = convertDomain(options.domain)
+    options = removeProperty(options, 'name')
+    options = merge({}, CookieManagerLocal.cookieSchema[key], options)
+    options.expires = CookieManagerLocal.convertExpires(options.maxAge)
+    options.domain = convertDomain(options.domain)
+  }
   Cookies.set(name, value, options)
 }
 
-function removeProperty (target, key) {
+function removeProperty (target = {}, key) {
   const { [key]: _, ...newTarget } = target
-  
   return newTarget
 }
