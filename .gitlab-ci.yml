@@ -1,5 +1,6 @@
 stages:
   - install
+  - build
   - publish
 
 cache: # 缓存
@@ -13,6 +14,13 @@ install-job:
   stage: install
   script:
     - npm install
+
+build-job:
+  tags:
+    - tx_linux
+  stage: build
+  script:
+    - npm run build
 
 publish-job:
   tags:
