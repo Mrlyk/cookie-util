@@ -1,6 +1,6 @@
 {
   "name": "@liaoyk/cookie-manager-local",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "main": "dist/cookie-manager-local.js",
   "files": [
@@ -14,11 +14,6 @@
   "keywords": [],
   "author": "liaoyk@wedoctor.com",
   "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "eslint --fix src/**/*.js"
-    }
-  },
   "dependencies": {
     "js-cookie": "^3.0.1"
   },
