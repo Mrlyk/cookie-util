@@ -9,7 +9,7 @@ import { convertDomain } from '../utils/domain-utils'
  * 删除单个 cookie，删除时要用原 set 时的 path 和 domain
  * @param {string} key
  */
-function removeCookie (key, options) {
+function removeCookie (key, options = {}) {
   CookieManagerLocal.hasCookieSchema()
   const name = get(CookieManagerLocal.cookieSchema[key], 'name')
   if (name === undefined) {

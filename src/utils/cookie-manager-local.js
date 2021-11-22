@@ -3,7 +3,7 @@ import getCookie from '../actions/get'
 import { removeCookie, cleanCookie } from '../actions/remove'
 
 class CookieManagerLocal {
-  constructor (cookieSchema) {
+  static init (cookieSchema) {
     if (!window.navigator.cookieEnabled) {
       throw new Error('cookie-manager-local: 浏览器未启用 cookie')
     }
@@ -15,7 +15,7 @@ class CookieManagerLocal {
 
   static hasCookieSchema () {
     if (!CookieManagerLocal.cookieSchema) {
-      throw new Error('cookie-manager-local: 未构造 cookie-manager-local 实例')
+      throw new Error('cookie-manager-local: 未初始化 cookie-manager-local')
     }
     return true
   }

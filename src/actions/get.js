@@ -4,6 +4,7 @@ import get from 'lodash/get'
 
 /**
  * 获取 cookie
+ * 目前还没有办法根据参数获取指定 domain/path 下的 cookie
  */
 export default function getCookie (key) {
   CookieManagerLocal.hasCookieSchema()
