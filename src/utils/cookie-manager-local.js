@@ -20,11 +20,6 @@ class CookieManagerLocal {
     return true
   }
 
-  static convertExpires (maxAge) {
-    const expires = new Date(Date.now() + maxAge).toUTCString()
-    return expires
-  }
-
   static set (key, value, options) {
     return setCookie(key, value, options)
   }

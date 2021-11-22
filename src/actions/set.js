@@ -14,7 +14,7 @@ export default function setCookie (key, value, options) {
   // 为了防止混乱，name 属性不允许重新定义。移除用户传过来的 name 属性
     options = removeProperty(options, 'name')
     options = merge({}, CookieManagerLocal.cookieSchema[key], options)
-    options.expires = CookieManagerLocal.convertExpires(options.maxAge)
+    options.expires = convertExpires(options.maxAge)
     options.domain = convertDomain(options.domain)
   }
   Cookies.set(name, value, options)
@@ -23,4 +23,9 @@ export default function setCookie (key, value, options) {
 function removeProperty (target = {}, key) {
   const { [key]: _, ...newTarget } = target
   return newTarget
+}
+
+function convertExpires (maxAge) {
+  const expires = new Date(Date.now() + maxAge)
+  return expires
 }
