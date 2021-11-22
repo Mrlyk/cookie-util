@@ -15,7 +15,7 @@
   "license": "ISC",
   "husky": {
     "hooks": {
-      "pre-commit": "eslint --fix"
+      "pre-commit": "eslint src/**/*.js"
     }
   },
   "dependencies": {
