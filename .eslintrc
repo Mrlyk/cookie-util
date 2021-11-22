@@ -6,7 +6,11 @@
   },
   "extends": ["eslint:recommended", "standard"],
   "parserOptions": {
-    "parser": "babel-eslint",
-    "ecmaVersion": 2017
-  }
+    "parser": "@babel/eslint-parser",
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "babel"
+  ]
 }

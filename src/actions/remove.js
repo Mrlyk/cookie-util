@@ -1,8 +1,5 @@
 import CookieManagerLocal from '../utils/cookie-manager-local'
 import Cookies from 'js-cookie'
-import get from 'lodash/get'
-import merge from 'lodash/merge'
-import keys from 'lodash/keys'
 import { convertDomain } from '../utils/domain-utils'
 
 /**
@@ -11,12 +8,12 @@ import { convertDomain } from '../utils/domain-utils'
  */
 function removeCookie (key, options = {}) {
   CookieManagerLocal.hasCookieSchema()
-  const name = get(CookieManagerLocal.cookieSchema[key], 'name')
+  const name = CookieManagerLocal.cookieSchema[key]?.name
   if (name === undefined) {
     console.error('cookie-manager-local: 未找到 cookie 配置 - ' + key)
     return
   }
-  options = merge({}, CookieManagerLocal.cookieSchema[key], options)
+  options = Object.assign({}, CookieManagerLocal.cookieSchema[key], options)
   options.domain = convertDomain(options.domain)
   Cookies.remove(name, options)
 }
@@ -26,7 +23,7 @@ function removeCookie (key, options = {}) {
  */
 function cleanCookie () {
   CookieManagerLocal.hasCookieSchema()
-  keys(CookieManagerLocal.cookieSchema).forEach(key => {
+  Object.keys(CookieManagerLocal.cookieSchema).forEach((key) => {
     removeCookie(key, CookieManagerLocal.cookieSchema[key])
   })
 }

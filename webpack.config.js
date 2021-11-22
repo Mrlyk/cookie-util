@@ -1,6 +1,5 @@
 const path = require('path')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const LodashWebpackPlugin = require('lodash-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
@@ -24,10 +23,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          plugins: ['lodash']
-        }
+        loader: 'babel-loader'
       }
     ]
   },
@@ -49,7 +45,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new LodashWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin()
   ]
