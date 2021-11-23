@@ -56,7 +56,8 @@ export default {
 }
 ```
 
-##### 重点属性说明 
+**重点属性说明**  
+
 **domain 属性** 
 domain 有三种可选值，以 test.example.com 举例   
 - root 当前域名的二级域名 .example.com
@@ -70,11 +71,17 @@ domain 有三种可选值，以 test.example.com 举例
 document.cookie='test=1' // 警告：cookie-util.js: cookie-util: cookie-util 启用严格模式，禁止手动设置 cookie
 ```
 #### 获取 cookie
-`CookieUtil.get(key: string)`
+```js
+CookieUtil.get(key: string)
+
+CookieUtil.get('cookie1') // 返回 cookieSchema 对象中 cookie1 的 name 对应的 value 
+```
 
 #### 设置 cookie
 ```js
 CookieUtil.set(key: string, value: string)
+
+CookieUtil.set('cookie1', 'test1') // 设置 cookieSchema 对象中 cookie1 的 name
 ```
 *ps: 支持传入参数*
 #### 删除 cookie
@@ -83,6 +90,7 @@ CookieUtil.set(key: string, value: string)
 
 - 清除所有 CookieSchema 中定义的 cookie
 `CookieUtil.clean()`
+
 ## 注意点
 - 本工具时为了能清晰的管理项目中所有的 cookie，防止在退出登录或多点登录时 cookie 造成的混乱问题，建议维护单独的 cookie-schema 文件来管理项目中用到的所有 cookie
 - 未初始化的 cookie 无法设置或获取
