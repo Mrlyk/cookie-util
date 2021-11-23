@@ -1,3 +1,3 @@
-import cookieManagerLocal from './utils/cookie-manager-local'
+import CookieUtil from './utils/cookie-util'
 
-export default cookieManagerLocal
+export default CookieUtil

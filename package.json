@@ -1,8 +1,8 @@
 {
-  "name": "@liaoyk/cookie-manager-local",
-  "version": "1.0.15",
+  "name": "@liaoyk/cookie-util",
+  "version": "1.0.0",
   "description": "",
-  "main": "dist/cookie-manager-local.js",
+  "main": "dist/cookie-util.js",
   "files": [
     "dist"
   ],

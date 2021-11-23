@@ -1,4 +1,4 @@
-import CookieManagerLocal from '../utils/cookie-manager-local'
+import CookieUtil from '../utils/cookie-util'
 import Cookies from 'js-cookie'
 
 /**
@@ -6,10 +6,10 @@ import Cookies from 'js-cookie'
  * 目前还没有办法根据参数获取指定 domain/path 下的 cookie
  */
 export default function getCookie (key) {
-  CookieManagerLocal.hasCookieSchema()
-  const name = CookieManagerLocal.cookieSchema[key]?.name
+  CookieUtil.hasCookieSchema()
+  const name = CookieUtil.cookieSchema[key]?.name
   if (name === undefined) {
-    console.error('cookie-manager-local: 未找到 cookie 配置 - ' + key)
+    console.error('cookie-util: 未找到 cookie 配置 - ' + key)
     return
   }
   return Cookies.get(name)

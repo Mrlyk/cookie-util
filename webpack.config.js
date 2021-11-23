@@ -8,9 +8,9 @@ const production = process.env.NODE_ENV === 'production' || false
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'cookie-manager-local.js',
+    filename: 'cookie-util.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'CookieManagerLocal',
+    library: 'CookieUtil',
     libraryTarget: 'umd'
   },
   resolve: {

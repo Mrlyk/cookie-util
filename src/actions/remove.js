@@ -1,4 +1,4 @@
-import CookieManagerLocal from '../utils/cookie-manager-local'
+import CookieUtil from '../utils/cookie-util'
 import Cookies from 'js-cookie'
 import { convertDomain } from '../utils/domain-utils'
 
@@ -7,13 +7,13 @@ import { convertDomain } from '../utils/domain-utils'
  * @param {string} key
  */
 function removeCookie (key, options = {}) {
-  CookieManagerLocal.hasCookieSchema()
-  const name = CookieManagerLocal.cookieSchema[key]?.name
+  CookieUtil.hasCookieSchema()
+  const name = CookieUtil.cookieSchema[key]?.name
   if (name === undefined) {
-    console.error('cookie-manager-local: 未找到 cookie 配置 - ' + key)
+    console.error('cookie-util: 未找到 cookie 配置 - ' + key)
     return
   }
-  options = Object.assign({}, CookieManagerLocal.cookieSchema[key], options)
+  options = Object.assign({}, CookieUtil.cookieSchema[key], options)
   options.domain = convertDomain(options.domain)
   Cookies.remove(name, options)
 }
@@ -22,9 +22,9 @@ function removeCookie (key, options = {}) {
  * 清除所有 cookieSchema 中定义的 cookie
  */
 function cleanCookie () {
-  CookieManagerLocal.hasCookieSchema()
-  Object.keys(CookieManagerLocal.cookieSchema).forEach((key) => {
-    removeCookie(key, CookieManagerLocal.cookieSchema[key])
+  CookieUtil.hasCookieSchema()
+  Object.keys(CookieUtil.cookieSchema).forEach((key) => {
+    removeCookie(key, CookieUtil.cookieSchema[key])
   })
 }
 
