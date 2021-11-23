@@ -7,7 +7,11 @@
 ## 使用
 #### 初始化
 ```js
-// name、domain、path 重要参数最好在初始化时声明
+
+/**
+ * name、domain、path 重要参数最好在初始化时声明
+ * @param strictModel 开启严格模式：不使用本工具的情况下无法设置 cookie
+*/
 CookieUtil.init(CookieSchema : {
   name: string,
   domain?: string,
@@ -15,7 +19,7 @@ CookieUtil.init(CookieSchema : {
   path?: string,
   httpOnly?: boolean,
   secure?: boolrean
-})
+}, strictModel: boolean)
 ```
 **示例**  
 ```js
@@ -52,12 +56,19 @@ export default {
 }
 ```
 
-**重点说明 domain 属性**  
+##### 重点属性说明 
+**domain 属性**
 domain 有三种可选值，以 test.example.com 举例   
 - root 当前域名的二级域名 .example.com
 - sub 当前域名及子域名 .test.example.com
 - current 当前域名 test.example.com
 
+**严格模式 strictModel**
+开启严格模式后，工具将禁止通过非本工具的方法设置 cookie。
+使用如下方法设置 cookie 将给出警告。
+```js
+document.cookie='test=1' // 警告：cookie-util.js: cookie-util: cookie-util 启用严格模式，禁止手动设置 cookie
+```
 #### 获取 cookie
 `CookieUtil.get(key: string)`
 

@@ -31,7 +31,7 @@ function getRootDomain () {
     urlItems.unshift(domainList.pop())
     rootDomain = urlItems.join('.')
     Cookies.set(tempKey, 'root-domain')
-    if (Cookies.get('$root-domain')) {
+    if (Cookies.get(tempKey)) {
       Cookies.set(tempKey, 'root-domain', { expires: expiredTime })
       break
     }
