@@ -1,9 +1,11 @@
 import CookieUtil from '@/utils/cookie-util'
 import Cookies from 'js-cookie'
 import { convertDomain } from '@/utils/domain-utils'
+import { setStrictModel, reliefStrictModel } from '@/utils/strict-model'
 
 export default function setCookie (key, value, options = {}) {
   CookieUtil.hasCookieSchema()
+  CookieUtil.strictModel && reliefStrictModel()
   const name = CookieUtil.cookieSchema[key]?.name
   if (name === undefined) {
     throw new Error('cookie-util: 未找到 cookie 配置 - ' + key)
@@ -14,6 +16,7 @@ export default function setCookie (key, value, options = {}) {
   options.expires = convertExpires(options.expires)
   options.domain = convertDomain(options.domain)
   Cookies.set(name, value, options)
+  CookieUtil.strictModel && setStrictModel()
 }
 
 function removeProperty (target, key) {

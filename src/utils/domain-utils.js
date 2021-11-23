@@ -24,7 +24,7 @@ function getRootDomain () {
   let rootDomain = ''
   const domainList = document.domain.split('.')
   const expiredTime = new Date(0)
-  const tempKey = '$root-domain'
+  const tempKey = '$root-domain&'
   const urlItems = []
   urlItems.unshift(domainList.pop())
   while (domainList.length) {

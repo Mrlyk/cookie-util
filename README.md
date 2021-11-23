@@ -17,7 +17,7 @@ CookieUtil.init(CookieSchema : {
   secure?: boolrean
 })
 ```
-
+**示例**  
 ```js
 import CookieUtil from 'cookie-util'
 import CookieSchema from './cookie-schema.js'
@@ -51,6 +51,13 @@ export default {
   }
 }
 ```
+
+**重点说明 domain 属性**  
+domain 有三种可选值，以 test.example.com 举例   
+- root 当前域名的二级域名 .example.com
+- sub 当前域名及子域名 .test.example.com
+- current 当前域名 test.example.com
+
 #### 获取 cookie
 `CookieUtil.get(key: string)`
 
