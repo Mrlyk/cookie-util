@@ -6,20 +6,26 @@
 
 ## 使用
 #### 初始化
-```js
+```ts
 
 /**
  * name、domain、path 重要参数最好在初始化时声明
  * @param strictModel 开启严格模式：不使用本工具的情况下无法设置 cookie
 */
-CookieUtil.init(CookieSchema : {
+interface Cookie {
   name: string,
   domain?: string,
   expires?: number,
   path?: string,
   httpOnly?: boolean,
-  secure?: boolrean
-}, strictModel: boolean)
+  secure?: boolean
+}
+
+interface CookieSchema {
+  [key: string]: Cookie 
+}
+
+CookieUtil.init(CookieSchema: CookieSchema, options?: { [key: string]: any })
 ```
 **示例**  
 ```js
@@ -95,5 +101,6 @@ CookieUtil.set('cookie1', 'test1') // 设置 cookieSchema 对象中 cookie1 的 
 - 本工具时为了能清晰的管理项目中所有的 cookie，防止在退出登录或多点登录时 cookie 造成的混乱问题，建议维护单独的 cookie-schema 文件来管理项目中用到的所有 cookie
 - 未初始化的 cookie 无法设置或获取
 - cookie 初始化的 name 后续无法更改
+- 启用严格模式要注意第三包设置 cookie 会被组织，可能导致意外的问题
 - <font color="red">强烈不建议在设置 cookie 时传入自定参数，可能会导致 clean 方法无法清除所有定义的 cookie，且违背工具初衷</font>
 - <font color="red">强烈建议在初始化时定义好所有要处理的 cookie，便于后续处理</font>
