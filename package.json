@@ -1,5 +1,5 @@
 {
-  "name": "@liaoyk/cookie-util",
+  "name": "@weiyi/cookie-util",
   "version": "1.0.5",
   "description": "",
   "main": "dist/cookie-util.js",
@@ -14,6 +14,10 @@
   "keywords": [],
   "author": "liaoyk@wedoctor.com",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://git.guahao-inc.com/package/cookie-util"
+  },
   "dependencies": {
     "js-cookie": "^3.0.1"
   },
