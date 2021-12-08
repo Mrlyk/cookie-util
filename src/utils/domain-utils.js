@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie'
 
 function convertDomain (domain) {
-  if (getHostName() === 'localhost' || isIp(domain)) {
+  if (getHostName() === 'localhost' || isIp(getHostName())) {
     return getHostName()
   }
   switch (domain) {

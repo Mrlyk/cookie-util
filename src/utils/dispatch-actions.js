@@ -1,6 +1,6 @@
 import setCookie from '../actions/set'
 import getCookie from '../actions/get'
-import { setStrictModel, reliefStrictModel } from './strict-model'
+import { setStrictModel } from './strict-model'
 import { removeCookie, cleanCookie } from '../actions/remove'
 import CookieUtil from '@/utils/cookie-util'
 
@@ -37,7 +37,6 @@ export default function dispatchActions (action, ...args) {
 function beforeDispatch (action) {
   // 是否初始化 schema
   CookieUtil.hasCookieSchema()
-  CookieUtil.strictModel && reliefStrictModel()
 }
 
 /**
