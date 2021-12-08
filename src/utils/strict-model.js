@@ -17,7 +17,7 @@ function setStrictModel () {
     set: (cookie) => {
       const cookieName = cookie.substring(0, cookie.indexOf('=')).trim()
       if (!allowableCookieArray.includes(cookieName)) {
-        console.warn('cookie-util: cookie-util 启用严格模式，禁止设置未初始化的 cookie')
+        console.warn(`cookie-util: cookie-util 启用严格模式，${cookieName} 未初始化无法设置`)
         // eslint-disable-next-line
         return false
       }

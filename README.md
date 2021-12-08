@@ -10,7 +10,7 @@
 
 /**
  * name、domain、path 重要参数最好在初始化时声明
- * @param strictModel 开启严格模式：不使用本工具的情况下无法设置 cookie
+ * @param strictModel 开启严格模式：未使用本工具初始化的 cookie 无法设置
 */
 interface Cookie {
   name: string,
@@ -69,10 +69,10 @@ domain 有三种可选值，以 test.example.com 举例
 - current 当前域名 test.example.com
 
 **严格模式 strictModel**  
-开启严格模式后，工具将禁止通过非本工具的方法设置 cookie。
-使用如下方法设置 cookie 将给出警告。
+开启严格模式后，工具将禁止设置没有通过 init 方法初始化的 cookie。
+开启后，仍然通过其他方法设置未初始化的 cookie 将给出如下警告：
 ```js
-document.cookie='test=1' // 警告：cookie-util.js: cookie-util: cookie-util 启用严格模式，禁止手动设置 cookie
+document.cookie='test=1' // 警告：cookie-util.js: cookie-util: cookie-util 启用严格模式，test 未初始化无法设置
 ```
 #### 获取 cookie
 ```js
@@ -96,9 +96,9 @@ CookieUtil.set('cookie1', 'test1') // 设置 cookieSchema 对象中 cookie1 的 
 `CookieUtil.clean()`
 
 ## 注意点
-- 本工具时为了能清晰的管理项目中所有的 cookie，防止在退出登录或多点登录时 cookie 造成的混乱问题，建议维护单独的 cookie-schema 文件来管理项目中用到的所有 cookie
+- 本工具时为了能清晰的管理项目中所有的 cookie，防止在退出登录或多点登录等情况下 cookie 造成的混乱问题，建议维护单独的 cookie-schema 文件来管理项目中用到的所有 cookie
 - 未初始化的 cookie 无法设置或获取
 - cookie 初始化的 name 后续无法更改
-- 启用严格模式要注意第三包设置 cookie 会被阻止，可能导致意外的问题
+- 启用严格模式要注意第三包设置 cookie 可能会被阻止而导致意外的问题
 - <font color="red">强烈不建议在设置 cookie 时传入自定参数，可能会导致 clean 方法无法清除所有定义的 cookie，且违背工具初衷</font>
-- <font color="red">强烈建议在初始化时定义好所有要处理的 cookie，便于后续处理</font>
+- <font color="red">强烈建议在初始化时定义好所有要处理的 cookie，便于后续管理。</font>
