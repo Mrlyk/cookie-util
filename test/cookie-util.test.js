@@ -24,6 +24,7 @@ describe('cookie-util 基础功能测试', () => {
     expect(CookieUtil.set('cookie1', 'test1')).toBeUndefined()
   })
   test('获取 cookies', () => {
+    CookieUtil.set('cookie1', 'test1')
     expect(CookieUtil.get('cookie1')).toBe('test1')
   })
   test('删除 cookies', () => {

@@ -1,7 +1,5 @@
-import setCookie from '../actions/set'
-import getCookie from '../actions/get'
 import { setStrictModel } from './strict-model'
-import { removeCookie, cleanCookie } from '../actions/remove'
+import dispatchActions from './dispatch-actions'
 
 /**
  * @param { object } cookieSchema 定义本项目使用的所有 cookie 属性
@@ -33,20 +31,20 @@ class CookieUtil {
     return true
   }
 
-  static set (key, value, options) {
-    return setCookie(key, value, options)
+  static set () {
+    return dispatchActions('set', ...arguments)
   }
 
   static get (key) {
-    return getCookie(key)
+    return dispatchActions('get', ...arguments)
   }
 
   static remove (key) {
-    return removeCookie(key)
+    return dispatchActions('remove', ...arguments)
   }
 
   static clean () {
-    return cleanCookie()
+    return dispatchActions('clean', ...arguments)
   }
 }
 
