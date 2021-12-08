@@ -10,7 +10,7 @@
 
 /**
  * name、domain、path 重要参数最好在初始化时声明
- * @param strictModel 开启严格模式：未使用本工具初始化的 cookie 无法设置
+ * @param { object } options 可选项：开启严格模式 { strictModel: true }
 */
 interface Cookie {
   name: string,
