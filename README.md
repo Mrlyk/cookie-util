@@ -2,7 +2,7 @@
 > web cookie 管理工具，用于理清项目中混乱的 cookie 。
 
 ## 安装
-`npm install @liaoyk/cookie-util --save-dev --registry http://110.42.187.35:4873/`
+`npm install @liaoyk/cookie-util --save --registry http://110.42.187.35:4873/`
 
 ## 使用
 #### 初始化
